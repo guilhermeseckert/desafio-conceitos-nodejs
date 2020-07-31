@@ -36,14 +36,15 @@ app.put("/repositories/:id", (request, response) => {
   const { title, url, techs} = request.body;
 
   const repositoriesIndex = repositories.findIndex( repository => repository.id === id);
- 
+
+
  if(repositoriesIndex < 0) {
    return response.status(400).send();
  }
 
  const repository = {
-   ...id,
-   ...likes,
+   id,
+   likes: 0,
    title,
    url,
    techs,
